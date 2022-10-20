@@ -35,6 +35,9 @@ public class ClienteService {
     }
 
     public static ArrayList<Cliente> getClientes(){
+        clientes.add(new Cliente(1,"João", new Endereco()));
+        clientes.add(new Cliente(2,"Avon", new Endereco()));
+        clientes.add(new Cliente(3,"Kelly", new Endereco()));
         return clientes;
     }
 

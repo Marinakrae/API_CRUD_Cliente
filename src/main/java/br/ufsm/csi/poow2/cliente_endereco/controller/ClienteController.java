@@ -11,6 +11,15 @@ import java.util.ArrayList;
 @RequestMapping("cliente")
 public class ClienteController {
 
+    //CRIAR UM objeto CLIENTE DAO AQUI
+
+    //TODOS - SEM AUTENTICAÇÃO
+    @GetMapping("/descricao")
+    public String toString(){
+        return "Controller cliente";
+    }
+
+    //USER - ADMIN
     @GetMapping("/listar")
     public static ArrayList<Cliente> getClientes() {
         return new ClienteService().getClientes();
@@ -21,11 +30,13 @@ public class ClienteController {
         return new ClienteService().getCliente(id);
     }
 
+    //ADMIN
     @PostMapping("/salvar")
     public static void salvar(@RequestBody Cliente cliente) {
         new ClienteService().salvar(cliente);
     }
 
+    //delete mapping?
     @PostMapping("/apagar")
     public static void apagar(@RequestBody Cliente cliente) {
         new ClienteService().apagar(cliente);
@@ -34,6 +45,11 @@ public class ClienteController {
     @PutMapping("/editar/{id}")
     public static void editar(@PathVariable("id") int id, @RequestBody Cliente cliente) {
         new ClienteService().editar(id, cliente);
+    }
+
+    @GetMapping("/usuario")
+    public Usuario usuario(){
+        return new Usuario("marina@teste", "123", "ADMIN");
     }
 
 }
